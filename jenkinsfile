@@ -3,33 +3,21 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                echo 'Cloning the repository...'
-                checkout scm
-            }
-        }
-
         stage('Build') {
             steps {
-                echo 'Running the build...'
-                // Example: Compile or run a Python script
-                sh 'python3 hello.py'
+                echo 'Building the application...'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                // Example: Run test cases if you have any
-                // sh 'pytest tests/'
             }
         }
 
         stage('Deploy') {
             steps {
                 echo 'Deploying the application...'
-                // Deployment steps go here
             }
         }
     }
