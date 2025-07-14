@@ -1,12 +1,36 @@
+
 pipeline {
-  agent {
-    docker { image 'node:16-alpine' }
-  }
-  stages {
-    stage('Test') {
-      steps {
-        sh 'node --version'
-      }
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Cloning the repository...'
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Running the build...'
+                // Example: Compile or run a Python script
+                sh 'python3 hello.py'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+                // Example: Run test cases if you have any
+                // sh 'pytest tests/'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the application...'
+                // Deployment steps go here
+            }
+        }
     }
-  }
 }
